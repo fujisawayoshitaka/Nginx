@@ -24,8 +24,8 @@ class BlogsController < ApplicationController
   end
 
   def update
-    if @blog(blog_params).update
-      redirect_to blogs_path, notice: 'blogは作成されました'
+    if @blog.update(blog_params)
+      redirect_to blogs_path, notice: 'blogは編集されました'
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class BlogsController < ApplicationController
   private
 
   def set_blog
-    @task = Blog.find(params[:id])
+    @blog = Blog.find(params[:id])
   end
 
   def blog_params
